@@ -2,6 +2,7 @@ var button = $("#light-button");
 var anchor = $("#light-button a");
 var counter = 0;
 var i = 0;
+let listenerControl = 0;
 
 button.click(function () {
   $("body").toggleClass("dark-body");
@@ -56,8 +57,9 @@ $(document).keydown(function (event) {
     $(".title-value-which").text(event.which);
     $(".title-value-code").text(event.code);
   }
-
-  $(".title-value").click(function () {
+  
+  if(listenerControl === 0){
+     $(".title-value").click(function () {
     navigator.clipboard.writeText($(this).text());
     $("#bar").append(
       "<div class='coppied-text-message'><p class='message'>Text was coppied</p></div>"
@@ -69,5 +71,8 @@ $(document).keydown(function (event) {
     if (counter === 1) {
       $(".coppied-text-message").toggleClass("coppied-text-message-dark");
     }
+    listenerControl++;
   });
+  }
+
 });
