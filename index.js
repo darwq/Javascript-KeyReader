@@ -23,7 +23,8 @@ button.click(function () {
   }
 });
 
-$(document).keydown(function (event) {
+if(listenerControl === 0){
+  $(document).keydown(function (event) {
   $(".info-div").hide();
   if (i === 0) {
     i++;
@@ -58,7 +59,6 @@ $(document).keydown(function (event) {
     $(".title-value-code").text(event.code);
   }
   
-  if(listenerControl === 0){
      $(".title-value").click(function () {
     navigator.clipboard.writeText($(this).text());
     $("#bar").append(
@@ -71,8 +71,8 @@ $(document).keydown(function (event) {
     if (counter === 1) {
       $(".coppied-text-message").toggleClass("coppied-text-message-dark");
     }
-    listenerControl++;
   });
-  }
-
 });
+  
+ listenerControl++;
+}
